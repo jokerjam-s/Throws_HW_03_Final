@@ -1,0 +1,49 @@
+.root {
+    -fx-font-family: "System";
+    -fx-font-size: 15px;
+    -fx-base: #FFFFFF;
+    -fx-background: #FFFFFF;
+    -fx-focus-color: #D2B32D;
+    -fx-control-inner-background: #FFFFFF;
+    -fx-inner-border: linear-gradient(to bottom, derive(-fx-color,100.0%) 0%, derive(-fx-color,100.0%) 100%);
+    -fx-body-color: linear-gradient( to bottom, derive(-fx-color, 100.0%) 0%, derive(-fx-color, 100.0%) 100%);
+}
+
+.background{
+    -fx-background-color:white;
+}
+
+
+.table-view{
+    -fx-font-family: Consolas;
+    -fx-font-size: 13px;
+}
+
+.button {
+        -fx-background-color:
+            #ecebe9,
+            rgba(0,0,0,0.05),
+            linear-gradient(#dcca8a, #c7a740),
+            linear-gradient(#f9f2d6 0%, #f4e5bc 20%, #e6c75d 80%, #e2c045 100%),
+            linear-gradient(#f6ebbe, #e6c34d);
+        -fx-background-insets: 0,9 9 8 9,9,10,3;
+        -fx-padding: 5 0 5 0;
+        -fx-font-family: "Helvetica";
+        -fx-font-size: 15px;
+        -fx-text-fill: #311c09;
+        -fx-width:100%;
+        -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.1) , 2, 0.0 , 0 , 1);
+    }
+
+    .button:pressed {
+        -fx-background-color:
+                #ecebe9,
+                rgba(0,0,0,0.05),
+                linear-gradient(#93908c, #d5c49e),
+                linear-gradient(#b7b29d 0%, #9b9277 20%, #ab9445 80%, #937d2c 100%),
+                linear-gradient(#e6c34d, #f6ebbe);
+    }
+
+    .button Text {
+    -fx-effect: dropshadow( one-pass-box , rgba(255,255,255,0.5) , 0, 0.0 , 0 , 1);
+}
