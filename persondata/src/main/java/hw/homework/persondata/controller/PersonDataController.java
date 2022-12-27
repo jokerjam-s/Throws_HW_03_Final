@@ -1,4 +1,4 @@
-package hw.th.userdata.persondata.controller;
+package hw.homework.persondata.controller;
 
 public class PersonDataController {
 

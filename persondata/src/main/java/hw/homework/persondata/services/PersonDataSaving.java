@@ -1,6 +1,6 @@
-package hw.th.userdata.persondata.services;
+package hw.homework.persondata.services;
 
-import hw.th.userdata.persondata.data.PersonData;
+import hw.homework.persondata.data.PersonData;
 
 /**
  * Сохранение информации о людях в файл

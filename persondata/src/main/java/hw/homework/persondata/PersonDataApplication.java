@@ -1,4 +1,4 @@
-package hw.th.userdata.persondata;
+package hw.homework.persondata;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

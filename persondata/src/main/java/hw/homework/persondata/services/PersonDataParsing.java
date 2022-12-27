@@ -1,8 +1,8 @@
-package hw.th.userdata.persondata.services;
+package hw.homework.persondata.services;
 
 
-import hw.th.userdata.persondata.data.PersonData;
-import hw.th.userdata.persondata.exceptions.PersonDataExceptions;
+import hw.homework.persondata.data.PersonData;
+import hw.homework.persondata.exceptions.PersonDataExceptions;
 
 import java.util.List;
 

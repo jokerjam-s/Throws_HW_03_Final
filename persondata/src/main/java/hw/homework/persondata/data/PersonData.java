@@ -1,4 +1,4 @@
-package hw.th.userdata.persondata.data;
+package hw.homework.persondata.data;
 
 import java.time.LocalDate;
 

@@ -1,4 +1,4 @@
-package hw.th.userdata.persondata.exceptions;
+package hw.homework.persondata.exceptions;
 
 /**
  * Класс исколючения - неверный формат даты рождения.

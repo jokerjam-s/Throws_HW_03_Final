@@ -7,4 +7,6 @@ module hw.homework.persondata {
 
     opens hw.homework.persondata to javafx.fxml;
     exports hw.homework.persondata;
+    opens hw.homework.persondata.controller to javafx.fxml;
+    exports hw.homework.persondata.controller;
 }
