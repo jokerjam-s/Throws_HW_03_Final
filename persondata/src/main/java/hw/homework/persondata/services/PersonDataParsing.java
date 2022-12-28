@@ -29,36 +29,4 @@ public interface PersonDataParsing {
      */
     List<PersonData> parseListPersonData(List<String> data);
 
-    /**
-     * Проверка строки на соответствие требованиям к Фамилии, Имени или Отчеству.
-     *
-     * @param name  - проверяемое значение
-     * @return      - результат проверки
-     */
-    boolean isPersonNameValid(String name);
-
-    /**
-     * Проверка строки на соответствие телефонному номеру.
-     *
-     * @param number    - проверяемое значение
-     * @return          - результат проверки
-     */
-    boolean isPersonPhoneValid(String number);
-
-    /**
-     * Проверка строки на соответствие информации о половой принадлужности персоны.
-     *
-     * @param gender    - проверяемое значение
-     * @return          - результат проверки
-     */
-    boolean isPersonGenderValid(String gender);
-
-    /**
-     * Проверка строки на соответствие информации о половой принадлужности персоны.
-     *
-     * @param birthDate - проверяемое значение
-     * @return          - результат проверки
-     */
-    boolean isPersonBirthDateValid(String birthDate);
-
 }
