@@ -33,6 +33,16 @@ public class PersonData {
         this.gender = gender;
     }
 
+    @Override
+    public String toString() {
+        return "<" + surName + ">" +
+                "<" + firstName + ">" +
+                "<" + secondName + ">" +
+                "<" + birthDate + ">" +
+                "<" + phone + ">" +
+                "<" + gender + ">";
+    }
+
     public String getSurName() {
         return surName;
     }

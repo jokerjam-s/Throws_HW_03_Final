@@ -2,9 +2,11 @@ package hw.homework.persondata.services;
 
 import hw.homework.persondata.data.PersonData;
 import hw.homework.persondata.exceptions.PersonDataExceptions;
+import hw.homework.persondata.exceptions.PersonDataWrongCount;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * Реализация интерфейса парсинга данных. Для проверки ввода отдельных элементов используется механизм RegExp.
@@ -17,7 +19,7 @@ import java.util.List;
 public class PersonDataParsingImpl implements PersonDataParsing {
     // Предопределенные шаблоны для проверки элементов структуры данных
 
-    // Шаблолн для проверки ФИО. Любые буквы кирилицы или латиницы, не менее 2х
+    // Шаблон для проверки ФИО. Любые буквы кирилицы или латиницы, не менее 2х
     private static final String NAME_PATTERN = "^[а-яА-Яa-zA-Z]{2,}$";
     // Шаблон телефонного номера, набор любых цифр длиной от 5 до 15 знаков
     private static final String PHONE_PATTERN = "^\\d{5,15}$";
@@ -28,17 +30,17 @@ public class PersonDataParsingImpl implements PersonDataParsing {
 
 
     // Шаблоны проверки соответствия
-    private final String namePattern;
-    private final String phonePattern;
-    private final String genderPattern;
-    private final String birthDatePattern;
+    private final Pattern namePattern;
+    private final Pattern phonePattern;
+    private final Pattern genderPattern;
+    private final Pattern birthDatePattern;
 
 
     public PersonDataParsingImpl(String namePattern, String phonePattern, String genderPattern, String birthDatePattern) {
-        this.namePattern = namePattern;
-        this.phonePattern = phonePattern;
-        this.genderPattern = genderPattern;
-        this.birthDatePattern = birthDatePattern;
+        this.namePattern = Pattern.compile(namePattern);
+        this.phonePattern = Pattern.compile(phonePattern);
+        this.genderPattern = Pattern.compile(genderPattern);
+        this.birthDatePattern = Pattern.compile(birthDatePattern);
     }
 
     public PersonDataParsingImpl() {
@@ -54,7 +56,26 @@ public class PersonDataParsingImpl implements PersonDataParsing {
      */
     @Override
     public PersonData parsePersonDate(String data) throws PersonDataExceptions {
-        // TODO: 28.12.2022 реализовать парсинг
+        String[] partsInfo = data.split(" ");
+        // проверить соответствие количества параметров
+        if (PersonData.class.getDeclaredFields().length != partsInfo.length){
+            throw new PersonDataWrongCount();
+        }
+
+        PersonData personData = new PersonData();
+
+        for (int i = 0; i < partsInfo.length; i++) {
+            if(isPersonNameValid(partsInfo[i])){
+                if(personData.getFirstName().isEmpty()){
+                    personData.setFirstName(partsInfo[i]);
+                } else if (personData.getSecondName().isEmpty()) {
+                    personData.setSecondName(partsInfo[i]);
+                }
+                // TODO: 29.12.2022 continue here
+            }
+        }
+
+
         return null;
     }
 
@@ -87,8 +108,7 @@ public class PersonDataParsingImpl implements PersonDataParsing {
      * @return          - результат проверки
      */
     private boolean isPersonNameValid(String name) {
-        // TODO: 28.12.2022 реализовать проверку имени через регэксп
-        return false;
+        return namePattern.matcher(name).matches();
     }
 
     /**
@@ -97,9 +117,8 @@ public class PersonDataParsingImpl implements PersonDataParsing {
      * @param number    - проверяемое значение
      * @return          - результат проверки
      */
-    private boolean isPersonNamePhoneValid(String number) {
-        // TODO: 28.12.2022 реализовать проверку телефона
-        return false;
+    private boolean isPersonPhoneValid(String number) {
+        return phonePattern.matcher(number).matches();
     }
 
     /**
@@ -109,8 +128,7 @@ public class PersonDataParsingImpl implements PersonDataParsing {
      * @return          - результат проверки
      */
     private boolean isPersonGenderValid(String gender) {
-        // TODO: 28.12.2022 выполнить реализацию проверки пола
-        return false;
+        return genderPattern.matcher(gender).matches();
     }
 
     /**
@@ -120,7 +138,6 @@ public class PersonDataParsingImpl implements PersonDataParsing {
      * @return          - результат проверки
      */
     private boolean isPersonBirthDateValid(String birthDate) {
-        // TODO: 28.12.2022 реализовать проверку даты рождения
-        return false;
+        return birthDatePattern.matcher(birthDate).matches();
     }
 }

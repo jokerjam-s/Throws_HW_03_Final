@@ -1,5 +1,6 @@
 package hw.homework.persondata;
 
+import hw.homework.persondata.data.PersonData;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -22,5 +23,6 @@ public class PersonDataApplication extends Application {
 
     public static void main(String[] args) {
         launch();
+
     }
 }
