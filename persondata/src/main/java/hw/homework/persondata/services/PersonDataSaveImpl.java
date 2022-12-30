@@ -10,7 +10,7 @@ public class PersonDataSaveImpl implements PersonDataSave{
     }
 
     /**
-     * Сохранение структуры в текстовый файл
+     * Сохранение структуры в текстовый файл. В качестве имени используется фамилия персоны.
      * @param data  - структура для сохранения
      * @throws IOException
      */
