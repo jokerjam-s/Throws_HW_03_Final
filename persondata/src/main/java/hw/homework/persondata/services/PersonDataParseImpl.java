@@ -17,7 +17,7 @@ import java.util.regex.Pattern;
  * Проверка шаблонов (https://regex101.com/)
  */
 
-public class PersonDataParsingImpl implements PersonDataParsing {
+public class PersonDataParseImpl implements PersonDataParse {
     // Предопределенные шаблоны для проверки элементов структуры данных
 
     // Шаблон для проверки ФИО. Любые буквы кирилицы или латиницы, не менее 2х
@@ -37,14 +37,14 @@ public class PersonDataParsingImpl implements PersonDataParsing {
     private final Pattern birthDatePattern;
 
 
-    public PersonDataParsingImpl(String namePattern, String phonePattern, String genderPattern, String birthDatePattern) {
+    public PersonDataParseImpl(String namePattern, String phonePattern, String genderPattern, String birthDatePattern) {
         this.namePattern = Pattern.compile(namePattern);
         this.phonePattern = Pattern.compile(phonePattern);
         this.genderPattern = Pattern.compile(genderPattern);
         this.birthDatePattern = Pattern.compile(birthDatePattern);
     }
 
-    public PersonDataParsingImpl() {
+    public PersonDataParseImpl() {
         this(NAME_PATTERN, PHONE_PATTERN, GENDER_PATTERN, BIRTHDATE_PATTERN);
     }
 
@@ -61,9 +61,10 @@ public class PersonDataParsingImpl implements PersonDataParsing {
 
         // проверить соответствие количества параметров, при несоответствии -
         // выбросить соответствующее исключение PersonDataWrongCount
-        if (PersonData.class.getDeclaredFields().length > partsInfo.length) {
+        int countValidate = this.isPersonDataCountValid(partsInfo);
+        if (countValidate < 0) {
             throw new PersonDataWrongCountLess();
-        } else if (PersonData.class.getDeclaredFields().length < partsInfo.length) {
+        } else if (countValidate > 0) {
             throw new PersonDataWrongCountMore();
         }
 
@@ -132,6 +133,24 @@ public class PersonDataParsingImpl implements PersonDataParsing {
             }
         }
         return list;
+    }
+
+    /**
+     * Проверка количества переданных параметров. Возвращает код ошибки сравнения.
+     * @param parameters    - массив переаваемых пользователем параметров
+     * @return              - код результата сравнения
+     *                         1 - передано больше чем нужно
+     *                        -1 - передано меньше чем нужно
+     *                         0 - количество верное
+     */
+    private int isPersonDataCountValid(String[] parameters){
+        if(PersonData.class.getDeclaredFields().length > parameters.length){
+            return -1;
+        } else if (PersonData.class.getDeclaredFields().length < parameters.length) {
+            return 1;
+        }
+
+        return 0;
     }
 
     /**

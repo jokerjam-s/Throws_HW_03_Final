@@ -9,7 +9,7 @@ import java.util.List;
  * Интерфейс для парсинга текстовой информации в формат PersonData
  */
 
-public interface PersonDataParsing {
+public interface PersonDataParse {
     /**
      * Парсинг строки в PersonData. В случае невозможности получения необходимой структуры данных
      * выбрасывает исключение группы PersonDataExceptions
