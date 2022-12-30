@@ -6,13 +6,11 @@ package hw.homework.persondata.exceptions;
  * В качестве допустимых символов разрешены только цифры и точки в строго определенных местах
  */
 public class PersonBirthDateWrongException extends PersonDataExceptions {
-    private String message = "Неверный формат даты рождения.";
-
     public PersonBirthDateWrongException() {
+        super("Неверный формат даты рождения.");
     }
 
     public PersonBirthDateWrongException(String message) {
         super(message);
-        this.message = message;
     }
 }

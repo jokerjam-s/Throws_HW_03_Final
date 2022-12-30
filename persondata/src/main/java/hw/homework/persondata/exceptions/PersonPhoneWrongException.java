@@ -6,13 +6,11 @@ package hw.homework.persondata.exceptions;
  * В качестве допустимых символов разрешены только цифры
  */
 public class PersonPhoneWrongException extends PersonDataExceptions{
-    private String message = "Телефоннфй номер имеет неверный формат.";
-
     public PersonPhoneWrongException() {
+        super("Телефоннфй номер имеет неверный формат.");
     }
 
     public PersonPhoneWrongException(String message) {
         super(message);
-        this.message = message;
     }
 }

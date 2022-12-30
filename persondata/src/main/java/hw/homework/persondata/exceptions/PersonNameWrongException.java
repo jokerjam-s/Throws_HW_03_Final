@@ -6,9 +6,8 @@ package hw.homework.persondata.exceptions;
  * В качестве допустимых символов разрешены латинские или кириллические буквы и дефис
  */
 public class PersonNameWrongException extends PersonDataExceptions {
-    private String messge = "Неверный формат Фамилии, Имени или Отчества.";
-
     public PersonNameWrongException() {
+        super("Неверный формат Фамилии, Имени или Отчества.");
     }
 
     public PersonNameWrongException(String message) {

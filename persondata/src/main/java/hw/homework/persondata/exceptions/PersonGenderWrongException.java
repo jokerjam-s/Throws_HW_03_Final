@@ -5,12 +5,11 @@ package hw.homework.persondata.exceptions;
  * Выбрасывается, если поол указан с использованием недопустимых символов.
  */
 public class PersonGenderWrongException extends PersonDataExceptions {
-    public String message = "Пол персоны указан неверно.";
-
     public PersonGenderWrongException() {
+        super("Пол персоны указан неверно.");
     }
 
     public PersonGenderWrongException(String message) {
-        this.message = message;
+        super(message);
     }
 }

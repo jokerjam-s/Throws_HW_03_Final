@@ -14,17 +14,17 @@ public class PersonData {
     // Отчество
     private String secondName;
     // Телефон
-    private Number phone;
+    private String phone;
     // дата рождения
     private LocalDate birthDate;
     // пол
     private String gender;
 
     public PersonData() {
-        this("", "", "", 0, null, "");
+        this("", "", "", "", null, "");
     }
 
-    public PersonData(String surName, String firstName, String secondName, Number phone, LocalDate birthDate, String gender) {
+    public PersonData(String surName, String firstName, String secondName, String phone, LocalDate birthDate, String gender) {
         this.surName = surName;
         this.firstName = firstName;
         this.secondName = secondName;
@@ -67,11 +67,11 @@ public class PersonData {
         this.secondName = secondName;
     }
 
-    public Number getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(Number phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
