@@ -1,10 +1,10 @@
 package hw.homework.persondata;
 
-import hw.homework.persondata.data.PersonData;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
 
 public class PersonDataApplication extends Application {
     // Заголовок прилодения
@@ -23,6 +23,16 @@ public class PersonDataApplication extends Application {
 
     public static void main(String[] args) {
         launch();
+
+        StackTraceElement[] elements = Thread.currentThread().getStackTrace();
+
+        System.out.println(elements[elements.length-1].toString());
+
+        for(StackTraceElement e : elements){
+            System.out.println(e.toString());
+        }
+
+
 
     }
 }
