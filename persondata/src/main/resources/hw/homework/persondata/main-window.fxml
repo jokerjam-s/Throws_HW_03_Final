@@ -25,7 +25,7 @@
                 <children>
                <AnchorPane cache="true" depthTest="ENABLE" prefHeight="0.0" prefWidth="780.0">
                   <children>
-                          <Button fx:id="buttonOk" layoutX="673.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="107.0" text="Ok" />
+                          <Button fx:id="buttonOk" onAction="#onButtonOkClick" layoutX="673.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="107.0" text="Ok" />
                           <TextField fx:id="textData" depthTest="ENABLE" layoutX="121.0" layoutY="-2.0" prefHeight="33.0" prefWidth="546.0" promptText="Иванов Иван Иванович 10.12.1998 79461112233 m">
                         <opaqueInsets>
                            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
@@ -61,7 +61,7 @@
       <children>
          <AnchorPane prefHeight="143.0" prefWidth="780.0">
             <children>
-               <TextArea editable="false" prefHeight="92.0" prefWidth="780.0" wrapText="true" />
+               <TextArea fx:id="txtLog" editable="false" prefHeight="92.0" prefWidth="780.0" wrapText="true" />
             </children>
          </AnchorPane>
       </children>

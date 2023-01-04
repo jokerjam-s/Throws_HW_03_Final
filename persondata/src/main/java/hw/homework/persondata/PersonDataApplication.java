@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-
 public class PersonDataApplication extends Application {
     // Заголовок прилодения
     private final String titleApplication = "GB - Исключения, итоговый проект.";
@@ -13,26 +12,23 @@ public class PersonDataApplication extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(PersonDataApplication.class.getResource("main-window.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle(titleApplication);
-        stage.setScene(scene);
-        stage.show();
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(PersonDataApplication.class.getResource("main-window.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            stage.setTitle(titleApplication);
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
+    @Override
+    public void stop() throws Exception {
+        System.exit(0);
     }
 
     public static void main(String[] args) {
         launch();
-
-        StackTraceElement[] elements = Thread.currentThread().getStackTrace();
-
-        System.out.println(elements[elements.length-1].toString());
-
-        for(StackTraceElement e : elements){
-            System.out.println(e.toString());
-        }
-
-
-
     }
 }

@@ -9,6 +9,10 @@
     -fx-body-color: linear-gradient( to bottom, derive(-fx-color, 100.0%) 0%, derive(-fx-color, 100.0%) 100%);
 }
 
+.text-area{
+    -fx-: #8a0808;
+}
+
 .background{
     -fx-background-color:white;
 }

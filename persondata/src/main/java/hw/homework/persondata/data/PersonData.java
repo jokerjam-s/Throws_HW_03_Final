@@ -1,93 +1,98 @@
 package hw.homework.persondata.data;
 
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 
 /**
- * Структура пользовательских данных
+ * Структура пользовательских данных, для привязки данных к отображению в
+ * javaFX TsbleView используется Simple-***-Property
  */
 
 public class PersonData {
     // Фамилия
-    private String surName;
+    private SimpleStringProperty surName;
     // Имя
-    private String firstName;
+    private SimpleStringProperty firstName;
     // Отчество
-    private String secondName;
+    private SimpleStringProperty secondName;
     // Телефон
-    private String phone;
+    private SimpleStringProperty phone;
     // дата рождения
-    private LocalDate birthDate;
+    private SimpleObjectProperty<LocalDate> birthDate;
     // пол
-    private String gender;
+    private SimpleStringProperty gender;
 
     public PersonData() {
         this("", "", "", "", null, "");
     }
 
     public PersonData(String surName, String firstName, String secondName, String phone, LocalDate birthDate, String gender) {
-        this.surName = surName;
-        this.firstName = firstName;
-        this.secondName = secondName;
-        this.phone = phone;
-        this.birthDate = birthDate;
-        this.gender = gender;
+        this.surName = new SimpleStringProperty(surName);
+        this.firstName = new SimpleStringProperty(firstName);
+        this.secondName = new SimpleStringProperty(secondName);
+        this.phone = new SimpleStringProperty(phone);
+        this.birthDate = new SimpleObjectProperty<>(birthDate);
+        this.gender = new SimpleStringProperty(gender);
     }
 
     @Override
     public String toString() {
-        return "<" + surName + ">" +
-                "<" + firstName + ">" +
-                "<" + secondName + ">" +
-                "<" + birthDate + ">" +
-                "<" + phone + ">" +
-                "<" + gender + ">";
+        return "<" + surName.get() + ">" +
+                "<" + firstName.get() + ">" +
+                "<" + secondName.get() + ">" +
+                "<" + birthDate.get().toString() + ">" +
+                "<" + phone.get() + ">" +
+                "<" + gender.get() + ">";
     }
 
     public String getSurName() {
-        return surName;
+        return surName.get();
     }
 
     public void setSurName(String surName) {
-        this.surName = surName;
+        this.surName.set(surName);
     }
 
     public String getFirstName() {
-        return firstName;
+        return firstName.get();
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        this.firstName.set(firstName);
     }
 
     public String getSecondName() {
-        return secondName;
+        return secondName.get();
     }
 
     public void setSecondName(String secondName) {
-        this.secondName = secondName;
+        this.secondName.set(secondName);
     }
 
     public String getPhone() {
-        return phone;
+        return phone.get();
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
+        this.phone.set(phone);
     }
 
     public LocalDate getBirthDate() {
-        return birthDate;
+        return birthDate.get();
     }
 
     public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
+        this.birthDate.set(birthDate);
     }
 
     public String getGender() {
-        return gender;
+        return gender.get();
     }
 
     public void setGender(String gender) {
-        this.gender = gender;
+        this.gender.set(gender);
     }
 }

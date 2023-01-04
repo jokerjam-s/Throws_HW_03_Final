@@ -5,7 +5,7 @@ import hw.homework.persondata.data.PersonData;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class PersonDataSaveImpl implements PersonDataSave{
+public class PersonDataSaveImpl implements PersonDataSave <PersonData>{
     public PersonDataSaveImpl() {
     }
 

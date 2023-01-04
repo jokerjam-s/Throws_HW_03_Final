@@ -17,7 +17,7 @@ import java.util.regex.Pattern;
  * Проверка шаблонов (https://regex101.com/)
  */
 
-public class PersonDataParseImpl implements PersonDataParse {
+public class PersonDataParseImpl implements PersonDataParse <PersonData> {
     // Предопределенные шаблоны для проверки элементов структуры данных
 
     // Шаблон для проверки ФИО. Любые буквы кирилицы или латиницы, не менее 2х
@@ -27,7 +27,9 @@ public class PersonDataParseImpl implements PersonDataParse {
     // Шаблон для определения пола - любая из букв f или m независимо от регистра
     private static final String GENDER_PATTERN = "^[fmFM]$";
     // Дата рождения в формате dd.mm.yyyy
-    private static final String BIRTHDATE_PATTERN = "^(0?[1-9]|[12][0-9]|3[01]])[.](0?[1-9]|1[012])[.](\\d{4}))$";
+    private static final String BIRTHDATE_PATTERN = "^(0?[1-9]|[12][0-9]|3[01])[.](0?[1-9]|1[012])[.](\\d{4})$";
+    // Шаблон даты для перевода в LocalDate
+    private static final String DATE_PATTERN = "dd.MM.yyyy";
 
 
     // Шаблоны проверки соответствия
@@ -36,16 +38,18 @@ public class PersonDataParseImpl implements PersonDataParse {
     private final Pattern genderPattern;
     private final Pattern birthDatePattern;
 
+    private final String datePattern;
 
-    public PersonDataParseImpl(String namePattern, String phonePattern, String genderPattern, String birthDatePattern) {
+    public PersonDataParseImpl(String namePattern, String phonePattern, String genderPattern, String birthDatePattern, String datePattern) {
         this.namePattern = Pattern.compile(namePattern);
         this.phonePattern = Pattern.compile(phonePattern);
         this.genderPattern = Pattern.compile(genderPattern);
         this.birthDatePattern = Pattern.compile(birthDatePattern);
+        this.datePattern = datePattern;
     }
 
     public PersonDataParseImpl() {
-        this(NAME_PATTERN, PHONE_PATTERN, GENDER_PATTERN, BIRTHDATE_PATTERN);
+        this(NAME_PATTERN, PHONE_PATTERN, GENDER_PATTERN, BIRTHDATE_PATTERN, DATE_PATTERN);
     }
 
     /**
@@ -74,19 +78,20 @@ public class PersonDataParseImpl implements PersonDataParse {
 
             if (this.isPersonNameValid(partsInfo[i])) {                   // Проверка на соответствие ФИО
                 // если совпалают - заполлняем пустое значение
-                if (personData.getFirstName().isEmpty()) {
+
+                if (personData.getSurName().isEmpty()) {
+                    personData.setSurName(partsInfo[i]);
+                } else if (personData.getFirstName().isEmpty()) {
                     personData.setFirstName(partsInfo[i]);
                 } else if (personData.getSecondName().isEmpty()) {
                     personData.setSecondName(partsInfo[i]);
-                } else if (personData.getSurName().isEmpty()) {
-                    personData.setSurName(partsInfo[i]);
                 }
             } else if (this.isPersonPhoneValid(partsInfo[i])) {         // Проверка на соответствие телефоному номеру
                 personData.setPhone(partsInfo[i]);
             } else if (this.isPersonBirthDateValid(partsInfo[i])) {     // Проверка на соответствие дате рождения
                 personData.setBirthDate(
                     LocalDate.parse(partsInfo[i],
-                    DateTimeFormatter.ofPattern(this.birthDatePattern.pattern()))
+                    DateTimeFormatter.ofPattern(this.datePattern))
                 );
             } else if (this.isPersonGenderValid(partsInfo[i])) {        // проверка на соответствие пола
                 personData.setGender(partsInfo[i].toLowerCase());       // сохраняем в нижний регистр
