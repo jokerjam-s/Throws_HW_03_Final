@@ -1,17 +1,16 @@
 package hw.homework.persondata.services;
 
 import hw.homework.persondata.data.PersonData;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
 
 import java.util.List;
 
 /**
  *
  */
-public class PersonDataCollection implements DataCollection<PersonData> {
-    // TODO: 05.01.2023 Continue here
-    private ObservableList<PersonData> dataList =
+public class PersonDataList implements DataList<PersonData> {
+    private ObservableList<PersonData> dataList = FXCollections.observableArrayList();
 
     /**
      * Добавление элемента в коллекцию
@@ -20,7 +19,7 @@ public class PersonDataCollection implements DataCollection<PersonData> {
      */
     @Override
     public void append(PersonData item) {
-
+        dataList.add(item);
     }
 
     /**
@@ -30,7 +29,7 @@ public class PersonDataCollection implements DataCollection<PersonData> {
      */
     @Override
     public void delete(PersonData item) {
-
+        dataList.remove(item);
     }
 
     /**
@@ -40,7 +39,7 @@ public class PersonDataCollection implements DataCollection<PersonData> {
      */
     @Override
     public void delete(int index) {
-
+        dataList.remove(index);
     }
 
     /**
@@ -51,7 +50,7 @@ public class PersonDataCollection implements DataCollection<PersonData> {
      */
     @Override
     public PersonData get(int index) {
-        return null;
+        return dataList.get(index);
     }
 
     /**
@@ -60,7 +59,7 @@ public class PersonDataCollection implements DataCollection<PersonData> {
      * @return
      */
     @Override
-    public List<PersonData> getList() {
-        return null;
+    public ObservableList<PersonData> getList() {
+        return dataList;
     }
 }

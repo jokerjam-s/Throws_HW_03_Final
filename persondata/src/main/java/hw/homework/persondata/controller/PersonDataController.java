@@ -2,6 +2,7 @@ package hw.homework.persondata.controller;
 
 import hw.homework.persondata.data.PersonData;
 import hw.homework.persondata.exceptions.PersonDataExceptions;
+import hw.homework.persondata.services.PersonDataList;
 import hw.homework.persondata.services.PersonDataParse;
 import hw.homework.persondata.services.PersonDataSave;
 import javafx.fxml.FXML;
@@ -13,9 +14,12 @@ import java.io.IOException;
 import java.time.LocalDate;
 
 public class PersonDataController {
-    private final String dataPath = File.separator + "saving" + File.separator;
+    //private final String dataPath = File.separator + "saving" + File.separator;
+    private final String dataPath = "saving" + File.separator;
     private final PersonDataParse dataParse = new PersonDataParse();
     private final PersonDataSave dataSave = new PersonDataSave(dataPath);
+
+    private PersonDataList dataList = new PersonDataList();
 
     // блок ссылок на контролы
     @FXML
@@ -47,9 +51,8 @@ public class PersonDataController {
 
     /**
      * Добавление информации в таблицу отобоажения
-     * @param data  - объект с отображаемыми данными
      */
-    private void fillTable(PersonData data){
+    private void fillTable(){
         colSurName.setCellValueFactory(new PropertyValueFactory<PersonData, String>("surName"));
         colFilrstName.setCellValueFactory(new PropertyValueFactory<PersonData, String>("firstName"));
         colSecondName.setCellValueFactory(new PropertyValueFactory<PersonData, String>("secondName"));
@@ -57,6 +60,7 @@ public class PersonDataController {
         colBirthDate.setCellValueFactory(new PropertyValueFactory<PersonData, LocalDate>("birthDate"));
         colGender.setCellValueFactory(new PropertyValueFactory<PersonData, String>("gender"));
 
+        tableData.setItems(dataList.getList());
     }
 
     /**
@@ -69,10 +73,11 @@ public class PersonDataController {
         try {
             // парсим строку
             PersonData personData = dataParse.parsePersonDate(data);
-            // отображаем данные
-
+            dataList.append(personData);
             // сохраняем
             dataSave.saveDataToFile(personData);
+            // отображаем список правильных введенных данных
+            fillTable();
         } catch (PersonDataExceptions | IOException e) {
             logInfo(e.getMessage());
         } catch (Exception e){

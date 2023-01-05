@@ -10,7 +10,7 @@
 }
 
 .text-area{
-    -fx-: #8a0808;
+    -fx-fill: #8a0808;
 }
 
 .background{
@@ -19,7 +19,7 @@
 
 
 .table-view{
-    -fx-font-family: Consolas;
+    -fx-font-family: Tahoma;
     -fx-font-size: 13px;
 }
 

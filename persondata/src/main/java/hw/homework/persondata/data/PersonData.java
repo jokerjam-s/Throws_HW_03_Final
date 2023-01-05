@@ -3,7 +3,6 @@ package hw.homework.persondata.data;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 
 /**
@@ -36,6 +35,30 @@ public class PersonData {
         this.phone = new SimpleStringProperty(phone);
         this.birthDate = new SimpleObjectProperty<>(birthDate);
         this.gender = new SimpleStringProperty(gender);
+    }
+
+    public SimpleStringProperty surNameProperty() {
+        return surName;
+    }
+
+    public SimpleStringProperty firstNameProperty() {
+        return firstName;
+    }
+
+    public SimpleStringProperty secondNameProperty() {
+        return secondName;
+    }
+
+    public SimpleStringProperty phoneProperty() {
+        return phone;
+    }
+
+    public SimpleObjectProperty<LocalDate> birthDateProperty() {
+        return birthDate;
+    }
+
+    public SimpleStringProperty genderProperty() {
+        return gender;
     }
 
     @Override

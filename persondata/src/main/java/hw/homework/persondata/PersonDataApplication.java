@@ -6,14 +6,15 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class  PersonDataApplication extends Application {
-    // Заголовок прилодения
+    // Заголовок приложения
     private final String titleApplication = "GB - Исключения, итоговый проект.";
 
     @Override
     public void start(Stage stage) throws Exception {
+        Scene scene;
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(PersonDataApplication.class.getResource("main-window.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
+            scene = new Scene(fxmlLoader.load());
             stage.setTitle(titleApplication);
             stage.setScene(scene);
             stage.show();

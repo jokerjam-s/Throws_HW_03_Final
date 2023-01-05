@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Компонент, реализующий управлениеи коллекцией данных
  */
-public interface DataCollection <E> {
+public interface DataList<E> {
     /**
      * Добавление элемента в коллекцию
       * @param item - добавляемые данные
