@@ -21,8 +21,7 @@ public class PersonDataController {
     private final String dataPath = "saving" + File.separator;
     private final PersonDataParse dataParse = new PersonDataParse();
     private final PersonDataSave dataSave = new PersonDataSave(dataPath);
-
-    private PersonDataList dataList = new PersonDataList();
+    private final PersonDataList dataList = new PersonDataList();
 
     // блок ссылок на контролы
     @FXML
