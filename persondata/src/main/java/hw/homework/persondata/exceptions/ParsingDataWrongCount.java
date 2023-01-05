@@ -5,12 +5,12 @@ package hw.homework.persondata.exceptions;
  * Выбрасывается, если кол-во параметров в анализируемой строке не равно количеству полей класса PersonData
  */
 
-public class PersonDataWrongCount extends ParsingDataExceptions {
-    public PersonDataWrongCount() {
+public class ParsingDataWrongCount extends ParsingDataExceptions {
+    public ParsingDataWrongCount() {
         super("Количество переданных значений не соответствует количеству требуемых полей.");
     }
 
-    public PersonDataWrongCount(String message) {
+    public ParsingDataWrongCount(String message) {
         super(message);
     }
 }

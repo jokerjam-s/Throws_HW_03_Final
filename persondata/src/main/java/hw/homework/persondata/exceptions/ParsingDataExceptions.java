@@ -3,12 +3,12 @@ package hw.homework.persondata.exceptions;
 /**
  * Класс исключений обработчика пользовательского ввода.
  */
-public class PersonDataExceptions extends RuntimeException {
-    public PersonDataExceptions() {
+public class ParsingDataExceptions extends RuntimeException {
+    public ParsingDataExceptions() {
         super("Персональные данные не распознаны или имеют неверный формат.");
     }
 
-    public PersonDataExceptions(String message) {
+    public ParsingDataExceptions(String message) {
         super(message);
     }
 }

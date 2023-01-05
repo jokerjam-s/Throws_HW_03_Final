@@ -10,7 +10,9 @@
 }
 
 .text-area{
-    -fx-fill: #8a0808;
+    -fx-text-fill: #8a0808;
+    -fx-font-weight: bold;
+    -fx-font-size: 11px;
 }
 
 .background{

@@ -59,16 +59,16 @@ public class PersonDataParse implements DataParse<PersonData> {
      * @return - полученное значение
      */
     @Override
-    public PersonData parsePersonDate(String data) throws PersonDataExceptions {
+    public PersonData parsePersonDate(String data) throws ParsingDataExceptions {
         String[] partsInfo = data.split(" ");
 
         // проверить соответствие количества параметров, при несоответствии -
         // выбросить соответствующее исключение PersonDataWrongCount
         int countValidate = this.isPersonDataCountValid(partsInfo);
         if (countValidate < 0) {
-            throw new PersonDataWrongCountLess();
+            throw new ParsingDataWrongCountLess();
         } else if (countValidate > 0) {
-            throw new PersonDataWrongCountMore();
+            throw new ParsingDataWrongCountMore();
         }
 
         PersonData personData = new PersonData();
@@ -96,19 +96,19 @@ public class PersonDataParse implements DataParse<PersonData> {
 
         // Проверим заполнение данными, если не все поля заполнены - выбасываем соответствующее исключение
         if (personData.getSurName().isEmpty() || personData.getFirstName().isEmpty() || personData.getSecondName().isEmpty()){
-            throw new PersonNameWrongException();
+            throw new ParsingNameWrongException();
         }
 
         if(personData.getPhone().isEmpty()){
-            throw new PersonPhoneWrongException();
+            throw new ParsingPhoneWrongException();
         }
 
         if (personData.getBirthDate() == null){
-            throw new PersonBirthDateWrongException();
+            throw new ParsingBirthDateWrongException();
         }
 
         if(personData.getGender().isEmpty()){
-            throw new PersonGenderWrongException();
+            throw new ParsingGenderWrongException();
         }
 
         // все OK - вернем заполненный объект

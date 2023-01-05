@@ -20,7 +20,7 @@ public interface DataList<E> {
 
     /**
      * Удвдение элемента по индексу
-     * @param index - индечс удаляемого элемента
+     * @param index - индекс удаляемого элемента
      */
     void delete(int index);
 

@@ -5,12 +5,12 @@ package hw.homework.persondata.exceptions;
  * Выбрасывается, если веденные ФИО содержат недопустимые символы.
  * В качестве допустимых символов разрешены латинские или кириллические буквы и дефис
  */
-public class PersonNameWrongException extends ParsingDataExceptions {
-    public PersonNameWrongException() {
+public class ParsingNameWrongException extends ParsingDataExceptions {
+    public ParsingNameWrongException() {
         super("Неверный формат Фамилии, Имени или Отчества.");
     }
 
-    public PersonNameWrongException(String message) {
+    public ParsingNameWrongException(String message) {
         super(message);
     }
 }

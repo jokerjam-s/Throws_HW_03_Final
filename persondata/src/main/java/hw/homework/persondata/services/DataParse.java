@@ -1,7 +1,7 @@
 package hw.homework.persondata.services;
 
 import hw.homework.persondata.data.PersonData;
-import hw.homework.persondata.exceptions.PersonDataExceptions;
+import hw.homework.persondata.exceptions.ParsingDataExceptions;
 
 import java.util.List;
 
@@ -11,17 +11,17 @@ import java.util.List;
 
 public interface DataParse<E> {
     /**
-     * Парсинг строки в PersonData. В случае невозможности получения необходимой структуры данных
-     * выбрасывает исключение группы PersonDataExceptions
+     * Парсинг строки в <E>. В случае невозможности получения необходимой структуры данных
+     * выбрасывает исключение группы ParsingDataExceptions
      *
      * @param data  - строка для анализа и парсинга
      * @return      - полученное значение
      */
-    PersonData parsePersonDate(String data) throws PersonDataExceptions;
+    E parsePersonDate(String data) throws ParsingDataExceptions;
 
     /**
-     * Парсинг строкового списка в ArrayList<PersonData>. Строки с неверным форматом игнорирует.
-     * Если валидных значений в переданном для обработки списке нет - вернет пустой ArrayList<PersonData>.
+     * Парсинг строкового списка в ArrayList<E>. Строки с неверным форматом игнорирует.
+     * Если валидных значений в переданном для обработки списке нет - вернет пустой ArrayList<E>.
      *
      * @param data  - список c исходной информацией
      * @return      - список с полученных значений

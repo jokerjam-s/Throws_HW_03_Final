@@ -1,7 +1,7 @@
 package hw.homework.persondata.controller;
 
 import hw.homework.persondata.data.PersonData;
-import hw.homework.persondata.exceptions.PersonDataExceptions;
+import hw.homework.persondata.exceptions.ParsingDataExceptions;
 import hw.homework.persondata.services.PersonDataList;
 import hw.homework.persondata.services.PersonDataParse;
 import hw.homework.persondata.services.PersonDataSave;
@@ -14,7 +14,10 @@ import java.io.IOException;
 import java.time.LocalDate;
 
 public class PersonDataController {
+    // wrong path for saving
     //private final String dataPath = File.separator + "saving" + File.separator;
+
+    // right path for saving
     private final String dataPath = "saving" + File.separator;
     private final PersonDataParse dataParse = new PersonDataParse();
     private final PersonDataSave dataSave = new PersonDataSave(dataPath);
@@ -78,7 +81,7 @@ public class PersonDataController {
             dataSave.saveDataToFile(personData);
             // отображаем список правильных введенных данных
             fillTable();
-        } catch (PersonDataExceptions | IOException e) {
+        } catch (ParsingDataExceptions | IOException e) {
             logInfo(e.getMessage());
         } catch (Exception e){
             e.printStackTrace();

@@ -1,11 +1,11 @@
 package hw.homework.persondata.exceptions;
 
-public class PersonDataWrongCountMore extends PersonDataWrongCount{
-    public PersonDataWrongCountMore() {
+public class ParsingDataWrongCountMore extends ParsingDataWrongCount {
+    public ParsingDataWrongCountMore() {
         super("Количество переданных параметров превышает необходимое.");
     }
 
-    public PersonDataWrongCountMore(String message) {
+    public ParsingDataWrongCountMore(String message) {
         super(message);
     }
 }
