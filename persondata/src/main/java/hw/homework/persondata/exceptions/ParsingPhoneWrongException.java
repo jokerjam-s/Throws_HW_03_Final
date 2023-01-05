@@ -5,7 +5,7 @@ package hw.homework.persondata.exceptions;
  * Выбрасывается, если веденный номер телефона содержит неверный формат.
  * В качестве допустимых символов разрешены только цифры
  */
-public class PersonPhoneWrongException extends PersonDataExceptions{
+public class PersonPhoneWrongException extends ParsingDataExceptions {
     public PersonPhoneWrongException() {
         super("Телефоннфй номер имеет неверный формат.");
     }
