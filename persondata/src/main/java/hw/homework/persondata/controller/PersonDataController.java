@@ -2,51 +2,40 @@ package hw.homework.persondata.controller;
 
 import hw.homework.persondata.data.PersonData;
 import hw.homework.persondata.exceptions.PersonDataExceptions;
-import hw.homework.persondata.services.PersonDataParseImpl;
-import hw.homework.persondata.services.PersonDataSaveImpl;
-import javafx.collections.ObservableList;
-import javafx.collections.ObservableListBase;
+import hw.homework.persondata.services.PersonDataParse;
+import hw.homework.persondata.services.PersonDataSave;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.List;
 
 public class PersonDataController {
-    private final PersonDataParseImpl dataParse = new PersonDataParseImpl();
-    private final PersonDataSaveImpl dataSave = new PersonDataSaveImpl();
+    private final String dataPath = File.separator + "saving" + File.separator;
+    private final PersonDataParse dataParse = new PersonDataParse();
+    private final PersonDataSave dataSave = new PersonDataSave(dataPath);
 
     // блок ссылок на контролы
     @FXML
     private TextArea txtLog;
-//    @FXML
-//    private Button buttonOk;
     @FXML
     private TextField textData;
-
     @FXML
     private TableView tableData;
-
     @FXML
     private TableColumn<PersonData, String> colSurName;
-
     @FXML
     private TableColumn<PersonData, String> colFilrstName;
-
     @FXML
     private TableColumn<PersonData, String> colSecondName;
-
     @FXML
     private TableColumn<PersonData, LocalDate> colBirthDate;
-
     @FXML
     private TableColumn<PersonData, String> colPhone;
-
     @FXML
     private TableColumn<PersonData, String> colGender;
-
 
     /**
      * вывод лог информации и сообщений пользователю
@@ -55,7 +44,6 @@ public class PersonDataController {
     private void logInfo(String message) {
         txtLog.appendText(message + "\n");
     }
-
 
     /**
      * Добавление информации в таблицу отобоажения
@@ -70,7 +58,6 @@ public class PersonDataController {
         colGender.setCellValueFactory(new PropertyValueFactory<PersonData, String>("gender"));
 
     }
-
 
     /**
      * обработчик нажатия кнопки Ok
@@ -89,7 +76,6 @@ public class PersonDataController {
         } catch (PersonDataExceptions | IOException e) {
             logInfo(e.getMessage());
         } catch (Exception e){
-            logInfo("Ошибка: " + e.getMessage());
             e.printStackTrace();
         }
     }

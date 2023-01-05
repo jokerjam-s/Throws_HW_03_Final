@@ -5,10 +5,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class PersonDataApplication extends Application {
+public class  PersonDataApplication extends Application {
     // Заголовок прилодения
     private final String titleApplication = "GB - Исключения, итоговый проект.";
-
 
     @Override
     public void start(Stage stage) throws Exception {
